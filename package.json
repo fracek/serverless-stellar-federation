@@ -1,0 +1,22 @@
+{
+  "name": "stellar-federation-function",
+  "version": "1.0.0",
+  "description": "Stellar Federation server running on Google Cloud Platform",
+  "main": "index.js",
+  "scripts": {
+    "functions:start": "functions start",
+    "functions:stop": "functions stop",
+    "functions:deploy": "functions deploy stellarFederation --trigger-http",
+    "functions:logs": "functions logs read",
+    "functions:status": "functions status",
+    "deploy": "gcloud beta functions deploy stellarFederation --trigger-http"
+  },
+  "author": "Francesco Ceccon <francesco@ceccon.me>",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@google-cloud/datastore": "^1.3.3"
+  },
+  "devDependencies": {
+    "@google-cloud/functions-emulator": "^1.0.0-alpha.29"
+  }
+}
