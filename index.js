@@ -15,6 +15,7 @@
  */
 
 const Datastore = require('@google-cloud/datastore');
+const cors = require('cors')
 
 const projectId = 'stellar-federation';
 
@@ -67,10 +68,9 @@ function lookupById(req, res, address) {
   return sendQueryResult(req, res, query);
 }
 
-exports.stellarFederation = function(req, res) {
+stellarFederationFn = function(req, res) {
   const q = req.query['q'];
   const type = req.query['type'];
-  res.set('Access-Control-Allow-Origin', "*")
   if (q === undefined || type === undefined) {
     res.status(500).send({detail: 'Wrong query'});
   } else {
@@ -82,4 +82,11 @@ exports.stellarFederation = function(req, res) {
       res.status.send(500).send({detail: 'Unknown query type ' + type});
     }
   }
+};
+
+exports.stellarFederation = function(req, res) {
+  var corsFn = cors();
+  corsFn(req, res, function() {
+    stellarFederationFn(req, res);
+  });
 };
