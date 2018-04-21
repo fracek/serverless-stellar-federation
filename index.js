@@ -70,6 +70,7 @@ function lookupById(req, res, address) {
 exports.stellarFederation = function(req, res) {
   const q = req.query['q'];
   const type = req.query['type'];
+  res.set('Access-Control-Allow-Origin', "*")
   if (q === undefined || type === undefined) {
     res.status(500).send({detail: 'Wrong query'});
   } else {
