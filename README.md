@@ -1,5 +1,5 @@
-Stellar Federation Function
-===========================
+Serverless Stellar Federation
+=============================
 
 This is a [Stellar Federation
 Server](https://www.stellar.org/developers/guides/concepts/federation.html)
@@ -7,21 +7,6 @@ implemented as a Google Cloud Function.
 
 The main advantage over the official federation server is that it's
 serverless, so it will be cheaper to run for the average user.
-
-
-Usage
------
-
-First, go to the Datastore dashboard and create a new `Account` entity.
-This entity should have at least the `address`, `name`, and `domain`
-keys. Optionally, you can add the `memo` and `memo_type` fields.
-
-After that, change the `projectId` constant in `index.js` to reflect
-your project id.
-
-Finally, deploy the function by uploading the project as zip (include
-both `index.js` and `package.json`) or by running `npm run deploy`.
-
 
 Donation
 --------

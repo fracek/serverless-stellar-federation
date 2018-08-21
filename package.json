@@ -1,24 +1,28 @@
 {
-  "name": "stellar-federation-function",
-  "version": "1.0.0",
-  "description": "Stellar Federation server running on Google Cloud Platform",
-  "main": "index.js",
+  "name": "serverless-stellar-federation",
+  "version": "0.1.0",
+  "description": "Stellar Federation Server",
+  "main": "src/handler.js",
   "scripts": {
-    "functions:start": "functions start",
-    "functions:stop": "functions stop",
-    "functions:kill": "functions kill",
-    "functions:deploy": "functions deploy stellarFederation --trigger-http",
-    "functions:logs": "functions logs read",
-    "functions:status": "functions status",
-    "deploy": "gcloud beta functions deploy stellarFederation --trigger-http"
+    "build": "tsc --p tsconfig.json",
+    "test": "mocha -r ts-node/register src/*.spec.ts"
   },
-  "author": "Francesco Ceccon <francesco@ceccon.me>",
-  "license": "Apache-2.0",
+  "author": "Francesco Ceccon",
+  "license": "MIT",
   "dependencies": {
-    "@google-cloud/datastore": "^1.3.3",
-    "cors": "^2.8.4"
+    "@google-cloud/datastore": "^1.4.2",
+    "serverless-google-cloudfunctions": "^1.1.0"
   },
   "devDependencies": {
-    "@google-cloud/functions-emulator": "^1.0.0-alpha.29"
+    "@types/chai": "^4.1.4",
+    "@types/express": "^4.16.0",
+    "@types/google-cloud__datastore": "^1.3.3",
+    "@types/mocha": "^5.2.5",
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0",
+    "mock-express-request": "^0.2.2",
+    "mock-express-response": "^0.2.2",
+    "serverless-plugin-typescript": "^1.1.5",
+    "ts-node": "^7.0.1"
   }
 }

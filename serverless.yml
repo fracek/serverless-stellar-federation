@@ -1,0 +1,17 @@
+service: stellar-federation-service
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-google-cloudfunctions
+
+provider:
+  name: google
+  runtime: nodejs
+  project: ${opt:project}
+  credentials: ${opt:credentials}
+
+functions:
+  federation:
+    handler: federation
+    events:
+      - http: federation
