@@ -16,6 +16,7 @@
 import { Request, Response } from 'express';
 import Datastore = require('@google-cloud/datastore');
 import { Query } from '@google-cloud/datastore/query';
+import cors = require('cors');
 import {
     FederationHandler,
     IFederationRecord,
@@ -56,5 +57,8 @@ class DatastoreFederationRecordRepository implements IFederationRecordRepository
 const handler = new FederationHandler(new DatastoreFederationRecordRepository('StellarAccount'));
 
 export async function federation(request: Request, response: Response) {
-    handler.handle(request, response);
+    var corsFn = cors();
+    corsFn(request, response, () => {
+        handler.handle(request, response);
+    });
 }
